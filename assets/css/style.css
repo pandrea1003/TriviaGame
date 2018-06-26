@@ -1,75 +1,146 @@
 
-ul {
-    list-style: none;
+body{
+	height: 100%;
+	letter-spacing: .3vw;
 }
-li {
-    font-family:'Rokkitt', serif;
-    font-size: 2em;
+
+h1{
+	font-size: 4vw;
+	margin-top: 5vh;
+	margin-left: auto;
+	margin-right: auto;
+	width: 60%;
 }
-input[type=radio] {
-    border: 0px;
-    width: 20px;
-    height: 2em;
+
+#opening-screen h1{
+	font-family: badaboom_bbregular;
+	font-size: 5vw;
+	color: black;
+	width: 90%;
+	padding: 4vw 4vw;
+	border-radius: 50%;
+	margin-top: 0;
 }
-p {
-    font-family:'Rokkitt', serif;
+
+#opening-screen p{
+	font-family: "Comic Sans MS";
+	font-size: 1.5vw;
+	padding: 2vw 2vw;
+	text-align: center;
+	border-radius: 50%;
 }
-/* Quiz Classes */
- .quizContainer {
-    background-color: lightgoldenrodyellow;
-    border-radius: 6px;
-    width: 75%;
-    margin: auto;
-    padding-top: 5px;
-    -moz-box-shadow: 10px 10px 5px #888;
-    -webkit-box-shadow: 10px 10px 5px #888;
-    box-shadow: 10px 10px 5px #888;
-    position: relative;
+
+#result-screen h1{
+	margin-bottom: 2vh;
 }
-.nextButton {
-    box-shadow: 3px 3px 5px #888;
-    border-radius: 6px;
-    width: 150px;
-    height: 40px;
-    text-align: center;
-    background-color: lightgrey;
-    /*clear: both;*/
-    color: red;
-    font-family:'Rokkitt', serif;
-    position: relative;
-    margin: auto;
-    padding-top: 20px;
+
+h2{
+	font-size: 2.5vw;
+	padding-left: 1vw;
+	padding-right: 1vw;
 }
-.question {
-    font-family:'Rokkitt', serif;
-    font-size: 2em;
-    width: 90%;
-    height: auto;
-    margin: auto;
-    border-radius: 6px;
-    background-color: lightgrey;
-    text-align: center;
+
+.header{
+	font-family: "badaboom_bbregular";
+	color: black;
+	padding-top: 2vh;
+	padding-bottom: 2vh;
+	overflow: auto;
 }
-.quizMessage {
-    background-color: peachpuff;
-    border-radius: 6px;
-    width: 30%;
-    margin: auto;
-    text-align: center;
-    padding: 2px;
-    font-family:'Rokkitt', serif;
-    color: red;
+
+.hidden{
+	visibility: hidden;
 }
-.choiceList {
-    font-family: Courier, serif;
-    color: blueviolet;
+
+.no-opacity{
+	opacity: 0;
 }
-.result {
-    width: 30%;
-    height: auto;
-    border-radius: 6px;
-    background-color: linen;
-    margin: auto;
-    text-align: center;
-    font-family:'Rokkitt', serif;
+
+.rounded-corner{
+	border-radius: 25px;
+}
+
+.background-image{
+	background-image: url('../images/background-img.jpg');
+	width: 100%;
+	height: auto;
+}
+
+.circular-sb{
+	font-family: "badaboom_bbregular";
+	text-align: center;
+	color: black;
+	border-radius: 50%;
+	height: 60vh;
+	margin-top: 20vh;
+	font-size: 5.5vw;
+}
+
+.circular-sb span{
+	position: relative;
+	top: 30%;
+}
+
+.comic-format {
+	border: 5px solid black;
+	background-color: white;
+}
+
+.answer-container, .statistics-container{
+	vertical-align: middle;
+	width: 70%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 1.5vh 0vw;
+	overflow: auto;
+}
+
+.answer-container:hover{
+	border: 3px solid black;
+	border-radius: 25px;
+	background-color: #ffedce;
+}
+
+.statistics-container{
+	width: 90%;
+}
+
+.slide-in{
+	animation: slide-in 1.5s forwards;
+}
+
+
+#qa-container h2{
+	padding-bottom: .5vh;
+}
+
+#main-content{
+	margin-top: 10vh;
+	margin-bottom: 5vh;
+}
+
+#answer-choices, #statistics-content{
+	font-family: "Comic Sans MS";
+	font-size: 2vw;
+}
+
+
+#verdict{
+	margin-top: 5vh;
+	margin-bottom: 10vh;
+}
+
+#final-statistics h1{
+	font-size: 5vw;
+	width: 75%;
+}
+
+#final-statistics h2{
+	font-size: 3.5vw;
+}
+
+#statistics{
+	padding-top: 3vh;
+	padding-bottom: 3vh;
+	margin-bottom: 5vh;
 }
