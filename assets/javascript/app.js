@@ -1,212 +1,183 @@
-var arrayOfQuestionObjects = [{
-    "Question": "Who started the fire in the break romm in seasson 2?",
-"ChoiceOne": "Jim",
- "ChoiceTwo": "Dwight", 
- "ChoiceThree": "Ryan", 
-"ChoiceFour": "Michael", 
-"Answer": "Ryan"}, 
 
-{"Question": "What did Phyllis as Michael to do in her Weding?", 
-"ChoiceOne": "Push her father down the aisle", 
-"ChoiceTwo": "Be a groomsman", 
-"ChoiceThree": "Give a speech",
- "ChoiceFour": "Hand out programs",
-  "Answer": "Push her father down the aisle"}, 
+//Set up a varible where the quiz will be placed
+var mainBox = $('#quiz');
 
-{"Question": "What is Karen's last name", 
-"ChoiceOne": "DiSalvo", 
-"ChoiceTwo": "Filippello", 
-"ChoiceThree": "Esposito", 
-"ChoiceFour": "Moretti", 
-"Answer": "Filippello"}, 
+//Array to hold the quiz(questions/answeres)
+var quiz = [{
+    question: "1 . What is the degree of a triangle?",
+    answers: ["180", "360", "190", "90"],
+    rightAnswer: "180"
+}, {
+    question: "2 . How many sides does a dodecahedron have?",
+    answers: ["20", "200", "12", "22"],
+    rightAnswer: "12"
+}, {
+    question: "3 . The total number of squares on a chessboard?",
+    answers: ["176", "120", "212", "204"],
+    rightAnswer: "204"
+}, {
+    question: "4 . Which Greek letter is used for summation in mathematics??",
+    answers: ["Delta", "Sigma", "Phi", "Zeta"],
+    rightAnswer: "Sigma"
+}, {
+    question: "5 . How many faces does an icosahedron have?",
+    answers: ["30", "15", "20", "40"],
+    rightAnswer: "20"
+}, {
+    question:  "6 . Which of the following is not a branch of mathematics?",
+    answers: ["Calculus", "Geodesy", "Topology", "Numerology"],
+    rightAnswer: "Numerology"
+}, {
+    question: "7 . What is the meaning of 'crore?",
+    answers: ["10 million ", "10 billion ", "100 million ", "10 trillion "],
+    rightAnswer: "10 million "
+}, {
+    question: "8 . What is the number called located on the bottom part of a fraction??",
+    answers: ["numerator ", "divisor", "denominator ", "multiple"],
+    rightAnswer: "denominator "
+}, {
+    question: "9. Which of the following figures has no line symmetry?",
+    answers: ["Rhombus", "Kite", "Semicircle", "Parallelogram"],
+    rightAnswer: "Parallelogram"
+}, {
+    question: "10. XVXII as a number?",
+    answers: ["19", "17", "27", "77"],
+    rightAnswer: "27"
+}];
 
-{"Question": "What movie do Michael and Holly do a parody of at the picnic?",
-"ChoiceOne": "Forrest Gump",
- "ChoiceTwo": "The Devil Wears Prada", 
- "ChoiceThree": "Terminator 2", 
- "ChoiceFour": "Slumdog Millionaire", 
-"Answer": "Slumdog Millionaire"},
+//Varible for the game
 
- {"Question": "What city does Michael move to with Holly?",
-"ChoiceOne": "Aspen,Colodado",
- "ChoiceTwo": "Littleton,Colorado", 
- "ChoiceThree": "Bolder,Colorado", 
- "ChoiceFour": "Denver,Colorado", 
-"Answer": "Littleton,Colorado"},
+var game = {
+correct:0,
+wrong:0,
+timer:60,
+countdown: function(){
+    game.timer--;
+    $('#TimerClock').html(game.timer);
 
-{"Question": "What is Erin's real first name",
-"ChoiceOne": "Kelly", 
-"ChoiceTwo": "Ben", 
-"ChoiceThree": "Jessica",
- "ChoiceFour": "Sarah", 
- "Answer": "Kelly"}, 
+    if (game.timer === 0){
+    game.end();
+    }
+},
 
-{"Question": "Who competes against Michael as Santa?",
-"ChoiceOne": "Phylis", 
-"ChoiceTwo": "Oscar",
- "ChoiceThree": "Kevin", 
- "ChoiceFour": "Jim", 
-"Answer": "Phylis"},
+//Game start function
+start: function() {
+    timer = setInterval(game.countdown, 1000);
 
-{"Question": "In the season 3 episode Grief Counseling Michael organizes a funeral for which animal?",
-"ChoiceOne": "Dog",
- "ChoiceTwo": "Bird", 
- "ChoiceThree": "Cat", 
- "ChoiceFour": "Rat", 
-"Answer": "Bird"},
+    //Removes game start screen and displays the timer on the page
+    $('#mainbody').prepend('<h2>Time Reminding: <span id="TimerClock">60</span> Seconds</h2>');
+    $('#start').remove();
 
- {"Question": "What is the name of Dwight's brother?",
-"ChoiceOne": "Moes", 
-"ChoiceTwo": "Jeb", 
-"ChoiceThree": "Jack", 
-"ChoiceFour": "Bob", 
-"Answer": "Jeb"}, 
-
- {"Question": "Who attends anger management in the season 3?",
-"ChoiceOne": "Dwight",
- "ChoiceTwo": "Andy",
-  "ChoiceThree": "Ryan",
-   "ChoiceFour": "Michael", 
-"Answer": "Andy"}];
-
-
-
-var correct = 0;
-var wrong = 0;
-var unanswered = 0;
-var questionsAsked = 0;
-var questionsToAnswer = 10;
-var timeToAnswer = 25;
-//var gifLimit = 5;
-var resultScreenShow = 7;
-var tickerLock = 1;
-
-
-
-function replaceOpeningScreen(){
-	$("#opening-screen").addClass("hidden");
-	$("#question-screen").removeClass("hidden");
+    //Loops through the quiz array and displays each question and its answer choices
+    for (var i = 0; i < quiz.length; i++) {
+        mainBox.append('<h3>' + quiz[i].question + '</h3>');
+        for (var j = 0; j < quiz[i].answers.length; j++) {
+        mainBox.append('<input type="radio" name="question' + '-' + i + '" value="' + quiz[i].answers[j] + '">' + quiz[i].answers[j]);
+    }
 }
 
-function shuffleArray(arr){
-	for(var i = 1; i < arr.length; i++) {
-		var random = Math.floor(Math.random() * (i + 1));
-		if(random !== i) {
-			var dummy = arr[random];
-			arr[random] = arr[i];
-			arr[i] = dummy;
-		}
-	}
-	return arr;
+    //Displays a submit button at the bottom of the quiz
+    mainBox.append('<button id="submit">Submit</button>');
+},
+
+//Game end function
+end: function() {
+
+    //Checks each of the answers and determinates if they are the correct or wrong 
+    $.each($("input[name='question-0']:checked"), function() {
+    if ($(this).val() == quiz[0].rightAnswer) {
+        game.correct++;
+    } else {
+        game.wrong++;
+    }
+    });
+    $.each($("input[name='question-1']:checked"), function() {
+        if ($(this).val() == quiz[1].rightAnswer) {
+        game.correct++;
+    } else {
+        game.wrong++;
+    }
+    });
+    $.each($("input[name='question-2']:checked"), function() {
+    if ($(this).val() == quiz[2].rightAnswer) {
+        game.correct++;
+    } else {
+        game.wrong++;
+    }
+    });
+    $.each($("input[name='question-3']:checked"), function() {
+    if ($(this).val() == quiz[3].rightAnswer) {
+        game.correct++;
+    } else {
+        game.wrong++;
+    }
+    });
+    $.each($("input[name='question-4']:checked"), function() {
+    if ($(this).val() == quiz[4].rightAnswer) {
+        game.correct++;
+    } else {
+        game.wrong++;
+    }
+    });
+    $.each($("input[name='question-5']:checked"), function() {
+    if ($(this).val() == quiz[5].rightAnswer) {
+        game.correct++;
+    } else {
+        game.wrong++;
+    }
+    });
+    $.each($("input[name='question-6']:checked"), function() {
+    if ($(this).val() == quiz[6].rightAnswer) {
+        game.correct++;
+    } else {
+        game.wrong++;
+    }
+    });
+    $.each($("input[name='question-7']:checked"), function() {
+    if ($(this).val() == quiz[7].rightAnswer) {
+        game.correct++;
+    } else {
+        game.wrong++;
+    }
+    });
+    $.each($("input[name='question-8']:checked"), function() {
+        if ($(this).val() == quiz[8].rightAnswer) {
+        game.correct++;
+        } else {
+        game.wrong++;
+        }
+    });
+    $.each($("input[name='question-9']:checked"), function() {
+        if ($(this).val() == quiz[9].rightAnswer) {
+        game.correct++;
+        } else {
+        game.wrong++;
+        }
+    });
+
+    this.result();
+},
+    
+//Clears the quiz and shows the results
+result: function() {
+
+    clearInterval(timer);
+
+    $('#mainbody h2').remove();
+    mainBox.html('<h2>Finished!</h2>');
+    mainBox.append('<h3>Right Answers: ' + this.correct + '</h3>');
+    mainBox.append('<h3>Wrong Answers: ' + this.wrong + '</h3>');
+    mainBox.append('<h3>Unanswered: ' + (quiz.length - (this.wrong + this.correct)) + '</h3>');
 }
-
-function populateQA(){
-	questionsAsked++;
-	if(questionsAsked <= questionsToAnswer) {
-		$("#time").text(timeToAnswer);
-		tickerLock = 0;
-		var arrayOfChoices = [arrayOfQuestionObjects[questionsAsked].ChoiceOne, 
-		arrayOfQuestionObjects[questionsAsked].ChoiceTwo, arrayOfQuestionObjects[questionsAsked].ChoiceThree,
-		arrayOfQuestionObjects[questionsAsked].ChoiceFour];
-		arrayOfChoices = shuffleArray(arrayOfChoices);
-		$("#question").text(arrayOfQuestionObjects[questionsAsked].Question);
-		$("#choice-a").text(arrayOfChoices[0]);
-		$("#choice-b").text(arrayOfChoices[1]);
-		$("#choice-c").text(arrayOfChoices[2]);
-		$("#choice-d").text(arrayOfChoices[3]);
-		parseAnswer();
-	}
-	else {
-		$("#result-screen").addClass("hidden");
-		$("#final-statistics").removeClass("hidden");
-		if(correct >= questionsToAnswer*.7)
-			$("#verdict").text("You are a bona fide comic book nerd!");
-		else if(correct <= questionsToAnswer*.3)
-			$("#verdict").text("Well, at least you have a life.")
-		else
-			$("#verdict").text("You have a healthy knowledge of comics.");
-		$("#correct-tally").text(correct);
-		$("#wrong-tally").text(wrong);
-		$("#unanswered-tally").text(unanswered);
-		$(document).on("click", function(){
-			$(document).unbind("click");
-			correct = 0;
-			wrong = 0;
-			unanswered = 0;
-			questionsAsked = 0;
-			arrayOfQuestionObjects = shuffleArray(arrayOfQuestionObjects);
-			arrayOfQuotes = shuffleArray(arrayOfQuotes);
-			$("#final-statistics").addClass("hidden");
-			$("#question-screen").removeClass("hidden");
-			populateQA();
-		});
-	}
-}
-
-function countdown(){
-	if(tickerLock != 1) {
-		timeToAnswer--;
-		$("#time").text(timeToAnswer);
-		if(timeToAnswer === 0) {
-			timeToAnswer = 25;
-			tickerLock = 1;
-			openTimeUpScreen();
-		}
-	}
-}
-
-function parseAnswer(){
-	$(".answer-container").on("click", function() {
-		$(".answer-container").unbind("click");
-		tickerLock = 1;
-		timeToAnswer = 25;
-		var userChoice = $(this).attr("choice");
-		$("#question-screen").addClass("hidden");
-		$("#result-screen").removeClass("hidden")
-		if($("#choice-" + userChoice).text() === arrayOfQuestionObjects[questionsAsked].Answer) {
-			$("#result").text("Correct!");
-			$("#correct-answer").text(questionsAsked);
-			correct++;
-		}
-		else {
-			$("#result").text("Wrong!");
-			$("#correct-answer").text("Correct answer: " + arrayOfQuestionObjects[questionsAsked].Answer);
-			wrong++;
-		}
-		
-		setTimeout(function(){
-			if(questionsAsked < questionsToAnswer) {
-				$("#result-screen").addClass("hidden");
-				$("#question-screen").removeClass("hidden");
-			}
-			populateQA();}, 1000*resultScreenShow);
-	});
-}
+};
 
 
-function openTimeUpScreen(){
-	$(".answer-container").unbind("click");
-	$("#question-screen").addClass("hidden");
-	$("#result-screen").removeClass("hidden");
-	$("#result").text("Time's Up!");
-	$("#correct-answer").text("Correct answer: " + arrayOfQuestionObjects[questionsAsked].Answer);
-	unanswered++;
-	setTimeout(function(){
-		if(questionsAsked < questionsToAnswer) {
-			$("#result-screen").addClass("hidden");
-			$("#question-screen").removeClass("hidden");
-		}
-		populateQA();
-	}, 1000*resultScreenShow);
-}
-
-$(document).ready(function(){
-	//renderOpeningScreen();
-	$(document).on("click", function(){
-		//$(document).unbind("click");
-		arrayOfQuestionObjects = shuffleArray(arrayOfQuestionObjects);
-		replaceOpeningScreen();
-		setInterval(countdown, 1000);
-		populateQA();
-	});
-});
+//On click, the game starts (call function)
+$(document).on('click', '#start', function() {
+    game.start();
+    });
+    
+//f submit button is clicked the game is over (call function)
+$(document).on('click', '#submit', function() {
+    game.end();
+    });

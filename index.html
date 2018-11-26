@@ -1,90 +1,26 @@
 <!DOCTYPE html>
-<html lang="en-us">
-	<head>
-		<meta charset="UTF-8">
-		<title>The Office</title>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-		<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
-		<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<script type="text/javascript" src="assets/javascript/app.js"></script>
-	</head>
-	<body>
-        <h1> The Office Trivia Game</h1>
-        <h2> Click the screen to begin the game</h2>
-	<!--Screen divider-->
-		<div class = "hidden" id = "question-screen">
-			<div class = "row">
-				<div class="col-xs-3">
-				</div>
-				<div class = "col-xs-6">	
-					<h1 class="comic-format text-center header rounded-corner">Time Left: <span id="time"></span></h1>
-				</div>
-				<div class = "col-xs-3">
-				</div>
-			</div>
-			<div class = "row" id = "main-content">
-				<div class = "col-xs-2">
-				</div>
-				<div class = "col-xs-8 comic-format text-center rounded-corner" id = "qa-container">
-					<h2 class="header">Question: <span id="question"></span></h2><br>
-					<h2 class = "header">Answer Choices:</h2><br>
-					<div id = "answer-choices">
-						<div class = "answer-container" choice = "a">A: <span id = "choice-a"></span></div><br>
-						<div class = "answer-container" choice = "b">B: <span id = "choice-b"></span></div><br>
-						<div class = "answer-container" choice = "c">C: <span id = "choice-c"></span></div><br>
-						<div class = "answer-container" choice = "d">D: <span id = "choice-d"></span></div><br>
-					</div>
-				</div>
-				<div class = "col-xs-2">
-				</div>
-			</div>
-		</div>
-	<!--Screen divider-->
-		<div class = "hidden" id = "result-screen">
-			<div class = "row">
-				<div class="col-xs-3">
-				</div>
-				<div class = "col-xs-6">	
-					<h1 class="comic-format text-center header rounded-corner" id="result"></h1>
-					<h2 class="comic-format text-center header rounded-corner" id="correct-answer"></h2>
-				</div>
-				<div class = "col-xs-3">
-				</div>
-			</div>
-			<div class = "row" id = "result-content">
-				<div class = "col-xs-3">
-				</div>
-			
-				<div class = "col-xs-3">
-				</div>
-			</div>
-		</div>
-	<!--Screen divider-->
-		<div class = "hidden" id = "final-statistics">
-			<div class = "row">
-				<div class="col-xs-3">
-				</div>
-				<div class = "col-xs-6">	
-					<h1 class="comic-format text-center header rounded-corner">Final Statistics</h1>
-					<h2 class="comic-format text-center header rounded-corner" id="verdict"></h2>
-				</div>
-				<div class = "col-xs-3">
-				</div>
-			</div>
-			<div class = "row" id = "statistics-content">
-				<div class = "col-xs-3">
-				</div>
-				<div class = "col-xs-6 comic-format text-center rounded-corner" id = "statistics">
-					<div class = "statistics-container">Click anywhere to play again</div><br>
-					<div class = "statistics-container">Correct Answers: <span id = "correct-tally"></span></div><br>
-					<div class = "statistics-container">Wrong Answers: <span id = "wrong-tally"></span></div><br>
-					<div class = "statistics-container">Unanswered: <span id = "unanswered-tally"></span></div>
-				</div>
-				<div class = "col-xs-3">
-				</div>
-			</div>
-		</div>
-	</body>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>TriviaGame</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css"/> 
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display" rel="stylesheet">
+</head>   
+<body>
 
-
+    <div id="heading">
+            <h1>Math Trivia</h1>
+        <div id="mainbody">
+        <div id="quiz">
+            <button id="start">Start</button>
+        </div>
+        </div>
+    </div>
+  
+ <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+ <script src="assets/javascript/app.js"></script>
+</body>
+</html>
