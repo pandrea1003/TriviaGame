@@ -1,14 +1,115 @@
+
 #heading{
-	background: red;
+	
 }
  #mainbody{
-	 background: purple;
+	 padding: 25px;
  }
+.jumbotron{
+	font-display: center !important;
+	border: 1px solid silver !important;
+	position: relative !important;
+	font-family: 'Chakra Petch', sans-serif;
+	padding: 10px 0;
+	background: rgb(172, 165, 165) !important;
+	border: 5px solid rgb(226, 208, 102) !important;
+
+}
+h2{
+	font-size: 80% !important;
+}
+
+h1{
+	display: block;
+	padding: 15px 25px;
+}
+h3{
+	font-family: 'Righteous';
+	color: rgb(119, 16, 59);
+	display: block;
+	padding: 15px 25px;
+	text-decoration: none;
+	font-family: 'Chakra Petch', sans-serif !important;
+
+}
+p, a{
+	font-family: 'Righteous';
+	display: block;
+	padding: 15px 25px;
+	text-decoration: none;
+}
 
  #quiz{
-	 background: olive;
+	background: rgb(226, 208, 102);
+	font-display: center;
+	 padding: 45px;
+	 border: 5px solid rgb(172, 165, 165);
+	 position: relative;
+	 font-family: 'Chakra Petch', sans-serif;
+
+
  }
 
  #start{
-	 background: blue;
+background-image: url('../images/trivia.jpeg'); 
+background-size: cover;
+background-repeat: no-repeat, repeat; 
+text-align: center;
+font-size: 50px;
+padding: 50px;
+width: 200px;
+transition: all 0.5s;
+cursor: pointer;
+margin: 5px;
+
  }
+ 
+ #TimerClock{
+	 display: inline-block;
+	 position: relative;
+	 font-family: 'Chakra Petch', sans-serif;
+	
+
+ }
+
+ #submit{
+	 font: 100;
+	 padding: 25px;
+
+ }
+
+ /* Width at 768px  */
+@media screen and (max-width: 768px) {
+    
+    #mainbody{
+        max-width: 92%;
+    }
+
+    #quiz {
+        max-width: 92%;
+    }
+    
+    #heading {
+        max-width: 92%;
+        }
+}
+ /* Width at 640px */
+@media screen and (max-width: 640px) {
+    
+    #mainbody{
+        max-width: 92%;
+        margin: 0;
+    }
+
+    #quiz {
+        max-width: 100%;
+    }
+
+    #heading {
+        max-width: 70%;
+    }
+
+    #button{
+        margin-left: 28%;
+    }
+}
